@@ -1,0 +1,207 @@
+/* General styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins';
+    font-size: 1rem;
+}
+
+/* Remove default link styling */
+.link {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Set text color to white */
+    font-family: 'poppins'; /* Apply the font family */
+    transition: transform 0.4s ease; /* Smooth transition for transform */
+    display: inline-block; /* Allows transform to be applied */
+    text-align: center;
+}
+
+/* Apply transform on hover */
+.link:hover {
+    transform: translateY(-10px); /* Move down by 10px on hover */
+}
+
+
+/* Container settings for full-page scrolling and snapping */
+.containerParent {
+    height: 100vh; /* Full viewport height */
+    overflow-y: auto; /* Allow vertical scrolling */
+    scroll-snap-type: y mandatory; /* Enable vertical scroll snapping */
+}
+
+/* Ensure the container takes up the full height of the viewport */
+.container {
+    
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* 100% of the viewport height */
+    position: relative; /* Container must be relative to position its children absolutely */
+    overflow: hidden; /* Ensure no overflow occurs */
+    scroll-snap-align: start;
+
+}
+
+#navBar{
+    justify-content: end;
+
+}
+
+
+.hamburger {
+    cursor: pointer;
+    width: 2rem; /* Adjust the width as needed */
+    height: 2rem; /* Adjust the height as needed */
+}
+
+.hamburger svg {
+    width: 100%;
+    height: 100%;
+    fill: white; /* Adjust the color as needed */
+    justify-content: end;
+}
+
+.hamburger:hover svg rect {
+    fill: #ccc; /* Change color on hover if desired */
+}
+
+
+/* Each row takes up 10% of the container's height */
+.row {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Allow for absolute positioning of images */
+    overflow: hidden;
+}
+
+/* Image should fit within the row, maintaining its aspect ratio */
+.image {
+    height: 100%; /* Constrain image height to the row height */
+    width: 100%;  /* Constrain image width to the row width */
+    top: -30px;
+    object-fit: cover; /* Maintain aspect ratio and contain within row */
+    display: block;
+    position: absolute; /* Allow image to be positioned absolutely */
+    overflow: visible;
+    will-change: transform;
+    opacity: 1;
+    transition: top 0.6s ease, height 0.6s ease, opacity 0.6s ease; /* Smooth transition for hover */
+}
+
+.row:hover .image {
+    height: 20rem;
+    filter: opacity(70%);
+    transition: height 0.4s ease, top 0.4s ease, opacity 0.6s ease; /* Smooth transition for hover */
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Modal content styling */
+.modal-content {
+    display: none;
+    max-width: 100vw; /* Adjust width as needed */
+    max-height: 100vh; /* Adjust height as needed */
+    margin: auto;
+    display: flex;
+    object-fit: contain;
+}
+
+
+
+/* Close button styling */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        align-items: center; /* Re-center for mobile */
+        justify-content: center;
+        display: flex;
+        overflow: hidden; /* Ensure no overflow issues */
+    }
+
+    .modal-content {
+        padding-top: auto;
+        max-width: 95vw; /* Make sure content fits smaller screens */
+        max-height: 95vh;
+        display: flex;
+        object-fit: contain; /* Ensure image scales without distortion */
+    }
+}
+
+.textNav{
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+
+.row:hover .textNav{
+    transform: translateY(10px);
+}
+
+
+
+.textNav2{
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+
+.row:hover .textNav2{
+    transform: translateY(-10px);
+}
+
+
+
+
+/* Navigation button styles */
+.navBtn {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 2;
+    transform: translateY(-50%);
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
